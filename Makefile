@@ -3,7 +3,7 @@
 PROJECTDIR = ~/playground/active/hivemind
 
 bootstrap: dev_requirements.txt
-ifeq ($(TRAVIS),"true")
+ifdef TRAVIS
 	@echo "Inside TravisCI, bootstrapping..."
 	pip install -r dev_requirements.txt
 else
