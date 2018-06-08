@@ -9,6 +9,6 @@ branches:
     - /^feature\-\S*$/
 
 install:
-    - make bootstrap_travisci
+    - make bootstrap
 script:
     - make test
