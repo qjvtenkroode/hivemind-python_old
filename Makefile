@@ -24,7 +24,7 @@ clean:
 
 test:
 	@echo "Starting test suite with pytest"
-ifeq ($(TRAVIS),"true")
+ifdef TRAVIS
 	pytest
 else
 	$(PROJECTDIR)/env/bin/pytest
