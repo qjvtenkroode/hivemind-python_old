@@ -8,9 +8,7 @@ branches:
     - develop
     - /^feature\-\S*$/
 
-before_install:
-    - pip install fabric
 install:
-    - fab bootstrap_travisci
+    - make bootstrap_travisci
 script:
-    - fab test:travis-ci
+    - make test
