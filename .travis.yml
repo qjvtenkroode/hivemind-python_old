@@ -1,0 +1,16 @@
+language: python
+python:
+    - "3.6"
+git:
+    depth: 3
+branches:
+    only:
+    - develop
+    - /^feature\-\S*$/
+
+before_install:
+    - pip install fabric
+install:
+    - fab bootstrap_travisci
+script:
+    - fab test:travis-ci

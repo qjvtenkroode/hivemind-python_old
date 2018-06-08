@@ -1,0 +1,16 @@
+*~
+.DS_Store
+
+## ignore python stuff
+*.pyc
+*.swp
+*.egg-info
+build
+dist
+.pytest_cache
+
+## ignore coverage files
+.coverage
+
+## ignore virtualenv
+env
