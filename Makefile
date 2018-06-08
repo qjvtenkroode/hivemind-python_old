@@ -3,7 +3,8 @@
 PROJECTDIR = ~/playground/active/hivemind
 
 bootstrap: dev_requirements.txt
-ifeq ($(TRAVIS),"TRUE")
+ifeq ($(TRAVIS),"true")
+	@echo "Inside TravisCI, bootstrapping..."
 	pip install -r dev_requirements.txt
 else
 ifeq ($(wildcard $(PROJECTDIR)/env),)
@@ -23,7 +24,7 @@ clean:
 
 test:
 	@echo "Starting test suite with pytest"
-ifeq ($(TRAVIS),"TRUE")
+ifeq ($(TRAVIS),"true")
 	pytest
 else
 	$(PROJECTDIR)/env/bin/pytest
