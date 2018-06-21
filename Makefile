@@ -22,6 +22,11 @@ clean:
 	find . -name "__pycache__" -exec rm -rf {} +
 	@echo "Done removing"
 
+freeze:
+	@echo "Freezing dev dependencies"
+	$(PROJECTDIR)/env/bin/pip freeze | sort - > dev_requirements.txt
+	@echo "Done"
+
 test:
 	@echo "Starting test suite with pytest"
 ifdef TRAVIS
