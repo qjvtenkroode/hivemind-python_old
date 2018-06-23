@@ -22,6 +22,19 @@ clean:
 	find . -name "__pycache__" -exec rm -rf {} +
 	@echo "Done removing"
 
+docker:
+ifeq ($(strip $(shell docker ps -a -f name=hivemind-nervecenter --format {{.Names}})),hivemind-nervecenter)
+	@echo "Found existing containers"
+	docker start hivemind-nervecenter
+else
+	@echo "Building container images from dockerfiles"
+	docker build dockerfiles -f dockerfiles/Rabbitmq_mqtt_management -t hivemind:nervecenter
+	@echo "Done building container images"
+	@echo "Running container:"
+	docker run -d --hostname hivemind-nervecenter --name hivemind-nervecenter -p 1883:1883 -p 5672:5672 -p 15672:15672 hivemind:nervecenter
+endif
+	@echo "Done running containers"
+
 test:
 	@echo "Starting test suite with pytest"
 ifdef TRAVIS
