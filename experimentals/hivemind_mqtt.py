@@ -1,7 +1,7 @@
 import pika
 from time import sleep
 
-EXCHANGE='amq.topic'
+EXCHANGE='hivemind'
 
 class Hivemind(object):
 

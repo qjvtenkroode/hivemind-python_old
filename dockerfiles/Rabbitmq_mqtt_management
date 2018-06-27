@@ -2,6 +2,7 @@ FROM rabbitmq:alpine
 
 RUN rabbitmq-plugins enable --offline rabbitmq_management
 RUN rabbitmq-plugins enable --offline rabbitmq_mqtt
+RUN printf 'loopback_users.guest = false\nlisteners.tcp.default = 5672\nhipe_compile = false\nmanagement.listener.port = 15672\nmanagement.listener.ssl = false\nmqtt.default_user = guest\nmqtt.default_pass = guest\nmqtt.allow_anonymous = true\nmqtt.vhost = /\nmqtt.exchange = hivemind\n' >> /etc/rabbitmq/rabbitmq.conf
 
 EXPOSE 15672
 EXPOSE 1883
