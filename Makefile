@@ -11,6 +11,7 @@ ifeq ($(wildcard $(PROJECTDIR)/env),)
 	@echo "Bootstrapping virtualenv"
 	python3 -m venv $(PROJECTDIR)/env
 endif
+	$(PROJECTDIR)/env/bin/pip install --upgrade pip
 	$(PROJECTDIR)/env/bin/pip install -r dev_requirements.txt
 endif
 	@echo "Done bootstrapping"
